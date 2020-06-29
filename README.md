@@ -1,5 +1,5 @@
-# for support join here [TorrentLeech-Gdrive](https://telegram.dog/torrentleechgdrivesupport)
-# working example group [Leech Here](https://telegram.dog/torrentleechgdrive)
+# Help and Support [Admin](https://t.me/MaxxRider)
+# working example group [Leech Here](https://t.me/joinchat/OV5y_FarWaGaNYUIYr6J9w)
 
 # Telegram Torrent Leecher 🔥🤖
 
@@ -13,8 +13,7 @@ A Telegram Torrent (and youtube-dl) Leecher based on [Pyrogram](https://github.c
     ✓ Untar
     ✓ Custom file name
     ✓ Custom commands
-    ✓ Get total size of your working cloud directory
-    ✓
+    ✓ 
 
 ### Credit goes to SpEcHiDe for his Publicleech repo.
 
@@ -149,60 +148,4 @@ and everythin except `[NAME]`
 
 * `/leech`: This command should be used as reply to a magnetic link, a torrent link, or a direct link. [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified torrent]
 
-* `/leech archive`: This command should be used as reply to a magnetic link, a torrent link, or a direct link. [This command will create a .tar.gz file of the output directory, and send the files in the chat, splited into PARTS of 1024MiB each, due to Telegram limitations]
-
-* `/gleech`: This command should be used as reply to a magnetic link, a torrent link, or a direct link. And this will download the files from the given link or torrent and will upload to the cloud using rclone.
-
-* `/gleech archive` This command will compress the folder/file and will upload to your cloud.
-
-* `/leech unzip`: This will unzip the .zip file and dupload to telegram.
-
-* `/gleech unzip`: This will unzip the .zip file and upload to cloud.
-
-* `/leech unrar`: This will unrar the .rar file and dupload to telegram.
-
-* `/gleech unrar`: This will unrar the .rar file and upload to cloud.
-
-* `/leech untar`: This will untar the .tar file and upload to telegram.
-
-* `/gleech untar`: This will untar the .tar file and upload to cloud..
-
-* `/tleech`: This will mirror the telegram files to ur respective cloud cloud.
-
-* `/tleech unzip`: This will unzip the .zip telegram file and upload to cloud.
-
-* `/tleech unrar`: This will unrar the .rar telegram file and upload to cloud.
-
-* `/tleech untar`: This will untar the .tar telegram file and upload to cloud.
-
-* `/getsize`: This will give you total size of your destination folder in cloud.
-
-
-* [Only work with direct link for now]It is like u can add custom name as prefix of the original file name.
-Like if your file name is `gk.txt` uploaded will be what u add in `CUSTOM_FILE_NAME` + `gk.txt`
-
-Only works with direct link.No magnet or torrent.
-
-And also added custom name like...
-
-You have to pass link as 
-`www.download.me/gk.txt | new.txt`
-
-the file will be uploaded as `new.txt`.
-
-
-## How to Use?
-
-* send any one of the available command, as a reply to a valid link.
-
-* if file is larger than 1500MB, [read this](https://t.me/c/1434259219/113).
-
-* if file is a TAR archive, [read this](https://t.me/c/1434259219/104) to know how to uncompress.
-
-
-## Credits, and Thanks to
-* [Dan Tès](https://telegram.dog/haskell) for his [Pyrogram Library](https://github.com/pyrogram/pyrogram)
-* [Robots](https://telegram.dog/Robots) for their [@UploadBot](https://telegram.dog/UploadBot)
-* [@AjeeshNair](https://telegram.dog/AjeeshNait) for his [torrent.ajee.sh](https://torrent.ajee.sh)
-* [@gotstc](https://telegram.dog/gotstc), @aryanvikash, [@HasibulKabir](https://telegram.dog/HasibulKabir) for their TORRENT groups
-* [![CopyLeft](https://telegra.ph/file/b514ed14d994557a724cb.jpg)](https://telegra.ph/file/fab1017e21c42a5c1e613.mp4 "CopyLeft Credit Video")
+* `/leech archive`: This command should be used as reply to a magnetic link, a torrent link, or a direct link. [This command will create a .tar.gz file of the output directory, and send the files in the chat, splited into PARTS of 1024MiB 
