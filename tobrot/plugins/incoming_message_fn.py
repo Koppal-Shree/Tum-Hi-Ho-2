@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K | gautamajay52 | Akshay C
-
+ 
 # the logging things
 import logging
 logging.basicConfig(
@@ -10,15 +10,15 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
-
-
+ 
+ 
 import os
-
+ 
 from tobrot import (
     DOWNLOAD_LOCATION
 )
-
-
+ 
+ 
 import time
 import aria2p
 import asyncio
@@ -39,7 +39,7 @@ async def incoming_purge_message_f(client, message):
         for download in downloads:
             LOGGER.info(download.remove(force=True))
     await i_m_sefg2.delete()
-
+ 
 async def incoming_message_f(client, message):
     """/leech command"""
     i_m_sefg = await message.reply_text("processing", quote=True)
@@ -151,8 +151,8 @@ async def incoming_gdrive_message_f(client, message):
             "**FCUK**! wat have you entered. \nPlease read /help \n"
             f"<b>API Error</b>: {cf_name}"
         )
-
-
+ 
+ 
 async def incoming_youtube_dl_f(client, message):
     """ /ytdl command """
     i_m_sefg = await message.reply_text("processing", quote=True)
@@ -162,6 +162,10 @@ async def incoming_youtube_dl_f(client, message):
         message.reply_to_message, "YTDL"
     )
     LOGGER.info(dl_url)
+    if len(message.command) > 1:
+        if message.command[1] == "gdrive":
+            with open('blame_my_knowledge.txt', 'w+') as gg:
+                gg.write("I am noob and don't know what to do that's why I have did this")
     LOGGER.info(cf_name)
     if dl_url is not None:
         await i_m_sefg.edit_text("extracting links")
