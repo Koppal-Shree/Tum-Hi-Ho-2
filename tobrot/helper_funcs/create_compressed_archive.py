@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K | gautamajay52
-
+ 
 # the logging things
 import logging
 logging.basicConfig(
@@ -9,13 +9,13 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 LOGGER = logging.getLogger(__name__)
-
+ 
 import asyncio
 import os
 import shutil
 import subprocess
-
-
+ 
+ 
 async def create_archive(input_directory):
     return_name = None
     if os.path.exists(input_directory):
@@ -50,9 +50,9 @@ async def create_archive(input_directory):
                 pass
             return_name = compressed_file_name
     return return_name
-
+ 
 #
-
+ 
 async def unzip_me(input_directory):
     return_name = None
     if os.path.exists(input_directory):
@@ -74,6 +74,8 @@ async def unzip_me(input_directory):
         )
         # Wait for the subprocess to finish
         stdout, stderr = process.communicate()
+        print(stdout)
+        print(stderr)
         #e_response = stderr.decode().strip()
         #t_response = stdout.decode().strip()
         if os.path.exists(uncompressed_file_name):
@@ -88,19 +90,23 @@ async def unzip_me(input_directory):
 async def untar_me(input_directory):
     return_name = None
     if os.path.exists(input_directory):
+        print(input_directory)
         base_dir_name = os.path.basename(input_directory)
         uncompressed_file_name = os.path.splitext(base_dir_name)[0]
-        subprocess.Popen(('mkdir', f'{uncompressed_file_name}'), stdout = subprocess.PIPE)
+        subprocess.Popen(('mkdir', f'{uncompressed_file_name}'), stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         process = subprocess.Popen([
             "tar",
             "-xvf",
-            f"{base_dir_name}",
+            f"/app/{base_dir_name}",
             "-C"
             f"{uncompressed_file_name}"],
-            stdout=subprocess.PIPE
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
         )
         # Wait for the subprocess to finish
         stdout, stderr = process.communicate()
+        print(stdout)
+        print(stderr)
         #e_response = stderr.decode().strip()
         #t_response = stdout.decode().strip()
         if os.path.exists(uncompressed_file_name):
@@ -128,6 +134,8 @@ async def unrar_me(input_directory):
         )
         # Wait for the subprocess to finish
         stdout, stderr = process.communicate()
+        print(stdout)
+        print(stderr)
         #e_response = stderr.decode().strip()
         #t_response = stdout.decode().strip()
         if os.path.exists(uncompressed_file_name):
