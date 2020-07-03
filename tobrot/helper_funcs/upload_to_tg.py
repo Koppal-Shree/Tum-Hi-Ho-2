@@ -162,8 +162,7 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
             button.append([pyrogram.InlineKeyboardButton(text="👉DIRECT LINK 😁", url=f"{tam_link}")])
         button_markup = pyrogram.InlineKeyboardMarkup(button)
         await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
-        await messa_ge.reply_text(f"🤖: {file_upload} <b>has been Uploaded successfully to your Cloud😌 <a href='tg://user?id={g_id}'> </a>", reply_markup=button_markup),
-        await messa_ge.reply_text(f"🤖: {file_upload} <b>has been uploaded successfully to your cloud <a href='https://t.me/mdh_hindi'> </a>", HANIF
+        await messa_ge.reply_text(f"🤖: {file_upload} <p style="color:green"><b>has been Uploaded successfully to your Cloud😌</b>.</p> |<a href='tg://user?id={g_id}'> </a>", reply_markup=button_markup),
         os.remove(file_upload)
         await del_it.delete()
     else:
