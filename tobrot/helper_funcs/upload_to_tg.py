@@ -154,15 +154,15 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
         #indexurl = f"{INDEX_LINK}/{file_upload}"
         #tam_link = requests.utils.requote_uri(indexurl)
         button = []
-        button.append([pyrogram.InlineKeyboardButton(text="<b>👉 GOOGLE DRIVE URL 🤗</b>", url=f"{gau_link}")])
+        button.append([pyrogram.InlineKeyboardButton(text="👉 GOOGLE DRIVE URL 🤗", url=f"{gau_link}")])
         if INDEX_LINK:
             indexurl = f"{INDEX_LINK}/{file_upload}"
             tam_link = requests.utils.requote_uri(indexurl)
             print(tam_link)
-            button.append([pyrogram.InlineKeyboardButton(text="<b>👉DIRECT LINK 😁</b>", url=f"{tam_link}")])
+            button.append([pyrogram.InlineKeyboardButton(text="👉DIRECT LINK 😁", url=f"{tam_link}")])
         button_markup = pyrogram.InlineKeyboardMarkup(button)
         await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
-        await messa_ge.reply_text(f"🤖: {file_upload} <b>has been Uploaded successfully to your Cloud😌| You must be Join Our TEAM DRIVE For Access the Link😂 👉TEAM DRIVE /teamdrive</b> <a href='tg://user?id={g_id}'>😌</a>", reply_markup=button_markup)
+        await messa_ge.reply_text(f"🤖: {file_upload} <b>has been Uploaded successfully to your Cloud😌</b>| You must be Join Our TEAM DRIVE For Access the Link😂 👉TEAM DRIVE /teamdrive <a href='tg://user?id={g_id}'>😌</a>", reply_markup=button_markup)
         #await message.edit_text(f"""🤖: {file_upload} has been Uploaded successfully to your cloud 😌| You must be Join Our TEAM DRIVE For Access the Link😂 👉TEAM DRIVE /teamdrive \n\n<b>👉 GOOGLE DRIVE URL</b>:  <a href="{gau_link}">FileLink</a>\n<b>👉 DIRECT LINK</b>:  <a href="{tam_link}">IndexLink</a>""")
         os.remove(file_upload)
         await del_it.delete()
