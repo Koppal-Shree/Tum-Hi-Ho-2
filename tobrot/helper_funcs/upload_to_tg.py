@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K | gautamajay52
-
+ 
 # the logging things
 import logging
 logging.basicConfig(
@@ -10,7 +10,7 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
-
+ 
 import asyncio
 import pyrogram
 import os
@@ -27,7 +27,7 @@ from tobrot.helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 from tobrot.helper_funcs.split_large_files import split_large_files
 from tobrot.helper_funcs.copy_similar_file import copy_file
 from requests.utils import requote_uri
-
+ 
 from tobrot import (
     TG_MAX_FILE_SIZE,
     EDIT_SLEEP_TIME_OUT,
@@ -36,14 +36,14 @@ from tobrot import (
     RCLONE_CONFIG,
     INDEX_LINK
 )
-
+ 
 from pyrogram import (
     InputMediaDocument,
     InputMediaVideo,
     InputMediaAudio
 )
-
-
+ 
+ 
 async def upload_to_tg(
     message,
     local_file_name,
@@ -125,17 +125,17 @@ async def upload_to_tg(
     # await message.delete()
     return dict_contatining_uploaded_files
 #
-
+ 
 async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
     await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
-    del_it = await message.edit_text("<b>🔊 Now Uploading to ☁️ Cloud!!!</b>")
+    del_it = await message.edit_text("🔊 Now Uploading to ☁️ Cloud!!!")
     subprocess.Popen(('touch', 'rclone.conf'), stdout = subprocess.PIPE)
     with open('rclone.conf', 'a', newline="\n") as fole:
         fole.write("[DRIVE]\n")
         fole.write(f"{RCLONE_CONFIG}")
     destination = f'{DESTINATION_FOLDER}'
     if os.path.isfile(file_upload):
-        tmp = subprocess.Popen(['rclone', 'copy', '--config=rclone.conf', f'{file_upload}', 'DRIVE:'f'{destination}', '-v'], stdout = subprocess.PIPE)
+        tmp = subprocess.Popen(['rclone', 'copy', '--config=rclone.conf', f'/app/{file_upload}', 'DRIVE:'f'{destination}', '-v'], stdout = subprocess.PIPE)
         pro, cess = tmp.communicate()
         gk_file = re.escape(file_upload)
         print(gk_file)
@@ -154,21 +154,22 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
         #indexurl = f"{INDEX_LINK}/{file_upload}"
         #tam_link = requests.utils.requote_uri(indexurl)
         button = []
-        button.append([pyrogram.InlineKeyboardButton(text="👉 GOOGLE DRIVE URL 🤗", url=f"{gau_link}")])
+        button.append([pyrogram.InlineKeyboardButton(text="☁️ FileCloudUrl ☁️", url=f"{gau_link}")])
         if INDEX_LINK:
             indexurl = f"{INDEX_LINK}/{file_upload}"
             tam_link = requests.utils.requote_uri(indexurl)
             print(tam_link)
-            button.append([pyrogram.InlineKeyboardButton(text="👉DIRECT LINK 😁", url=f"{tam_link}")])
+            button.append([pyrogram.InlineKeyboardButton(text="ℹ️ FileIndexUrl ℹ️", url=f"{tam_link}")])
         button_markup = pyrogram.InlineKeyboardMarkup(button)
         await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
-        await messa_ge.reply_text(f"🤖: {file_upload} <b>has been Uploaded successfully to your Cloud😌</b> <i><b>💥Join Our TEAM DRIVE to Access Link😊You can't Access Link without join Our Team Drive 👉<i><b>/JOIN_TEAM_DRIVE</b><i> |<a href='tg://user?id={g_id}'> </a>", reply_markup=button_markup),
+        await messa_ge.reply_text(f"🤖: {file_upload} has been Uploaded successfully to your Cloud <a href='tg://user?id={g_id}'>🤒</a>", reply_markup=button_markup)
+        #await message.edit_text(f"""🤖: {file_upload} has been Uploaded successfully to your cloud 🤒\n\n☁️ Cloud URL:  <a href="{gau_link}">FileLink</a>\nℹ️ Direct URL:  <a href="{tam_link}">IndexLink</a>""")
         os.remove(file_upload)
         await del_it.delete()
     else:
         tt= os.path.join(destination, file_upload)
         print(tt)
-        tmp = subprocess.Popen(['rclone', 'copy', '--config=rclone.conf', f'{file_upload}', 'DRIVE:'f'{tt}', '-v'], stdout = subprocess.PIPE)
+        tmp = subprocess.Popen(['rclone', 'copy', '--config=rclone.conf', f'/app/{file_upload}', 'DRIVE:'f'{tt}', '-v'], stdout = subprocess.PIPE)
         pro, cess = tmp.communicate()
         print(pro)
         g_file = re.escape(file_upload)
@@ -189,23 +190,23 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
         #tam_link = requests.utils.requote_uri(indexurl)
         #print(tam_link)
         button = []
-        button.append([pyrogram.InlineKeyboardButton(text="👉 CLOUD URL😌", url=f"{gau_link}")])
+        button.append([pyrogram.InlineKeyboardButton(text="☁️ FolderCloudUrl ☁️", url=f"{gau_link}")])
         if INDEX_LINK:
             indexurl = f"{INDEX_LINK}/{file_upload}/"
             tam_link = requests.utils.requote_uri(indexurl)
             print(tam_link)
-            button.append([pyrogram.InlineKeyboardButton(text="👉 Folder Index Url 😊", url=f"{tam_link}")])
+            button.append([pyrogram.InlineKeyboardButton(text="ℹ️ FolderIndexUrl ℹ️", url=f"{tam_link}")])
         button_markup = pyrogram.InlineKeyboardMarkup(button)
         await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
-        await messa_ge.reply_text(f"🤖: Folder has been Uploaded successfully to {tt} in your Cloud <a href='tg://user?id={g_id}'>😌</a>", reply_markup=button_markup)
+        await messa_ge.reply_text(f"🤖: Folder has been Uploaded successfully to {tt} in your Cloud <a href='tg://user?id={g_id}'>🤒</a>", reply_markup=button_markup)
         #await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
-        #await messa_ge.reply_text(f"""🤖: Folder has been Uploaded successfully to {tt} in your cloud 😌\n\n☁️ Cloud URL:  <a href="{gau_link}">FolderLink</a>\nℹ️ Index Url:. <a href="{tam_link}">IndexLink</a>""")
+        #await messa_ge.reply_text(f"""🤖: Folder has been Uploaded successfully to {tt} in your cloud 🤒\n\n☁️ Cloud URL:  <a href="{gau_link}">FolderLink</a>\nℹ️ Index Url:. <a href="{tam_link}">IndexLink</a>""")
         shutil.rmtree(file_upload)
         await del_it.delete()
-
+ 
 #
-
-
+ 
+ 
 async def upload_single_file(message, local_file_name, caption_str, from_user, edit_media):
     await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
     sent_message = None
