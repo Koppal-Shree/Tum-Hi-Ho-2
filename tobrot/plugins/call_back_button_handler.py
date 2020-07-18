@@ -14,9 +14,9 @@ from tobrot.helper_funcs.download_aria_p_n import aria_start
 from tobrot.helper_funcs.youtube_dl_button import youtube_dl_call_back
 from tobrot.plugins.status_message_fn import cancel_message_f
  
-async def button(client, update: CallbackQuery):
+async def button(bot, update: CallbackQuery):
 	cb_data = update.data
-	g = await AdminCheck(client, update.message.chat.id, update.from_user.id)
+	g = await AdminCheck(bot, update.message.chat.id, update.from_user.id)
 	print(g)
 	if (update.from_user.id == update.message.reply_to_message.from_user.id) or g:
 		print(cb_data)
@@ -35,7 +35,6 @@ async def button(client, update: CallbackQuery):
 					await i_m_s_e_g.edit_text("<i>FAILED</i>\n\n" + str(e) + "\n#error")
 			else:
 				await update.message.delete()
-	#cb_data = update.data
-	else:
-		if "|" in cb_data:
-			await youtube_dl_call_back(client, update)
+	
+		elif "|" in cb_data:
+			await youtube_dl_call_back(bot, update)
